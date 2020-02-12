@@ -12,6 +12,8 @@ public class PlayerMover : MonoBehaviour
 
     Vector3 velocity;
 
+    public GameObject pauseScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +34,22 @@ public class PlayerMover : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+        if (Input.GetKeyDown(KeyCode.P))//Code for pause button - see https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+        {
+            if (Time.timeScale == 1) //Pauses
+            {
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                pauseScreen.SetActive(true);
+                //showPaused(); 
+            }
+            else if (Time.timeScale == 0) // Unpauses
+            {
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+                pauseScreen.SetActive(false);
+                //hidePaused();
+            }
+        }
     }
 }

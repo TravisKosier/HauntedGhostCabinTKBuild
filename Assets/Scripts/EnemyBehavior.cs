@@ -70,7 +70,7 @@ public class EnemyBehavior : MonoBehaviour
                     if (seesPlayer) //If yes, keep pursuing
                     {
                         dist = Vector3.Distance(this.transform.position, player.transform.position);
-                        if (dist > 3)
+                        if (dist > 2)
                         {
                             navMeshAgent.SetDestination(player.transform.position); //Move towards player
                         }
