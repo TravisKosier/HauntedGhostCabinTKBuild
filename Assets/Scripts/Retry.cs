@@ -12,6 +12,6 @@ public class Retry : MonoBehaviour
 
     public void retry()
     {
-        ChangeScene(0);
+        ChangeScene(1); //SampleScene
     }
 }

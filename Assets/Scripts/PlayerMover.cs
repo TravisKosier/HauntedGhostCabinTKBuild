@@ -34,7 +34,7 @@ public class PlayerMover : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.P))//Code for pause button - see https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.JoystickButton7))//Code for pause button - see https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
         {
             if (Time.timeScale == 1) //Pauses
             {

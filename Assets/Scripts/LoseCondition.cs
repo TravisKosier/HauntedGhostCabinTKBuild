@@ -10,7 +10,7 @@ public class LoseCondition : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2); //End Screen
         }
     }
 }

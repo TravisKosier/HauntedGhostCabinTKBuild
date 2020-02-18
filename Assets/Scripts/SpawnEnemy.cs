@@ -10,6 +10,10 @@ public class SpawnEnemy : MonoBehaviour
     public Transform[] waypoints;
     public Transform playerCapsule;
     public bool hasSpawned = false;
+    //public float rotationSpeed = 0.1f; //Larger number is slower
+    //public Transform startRotation;
+    public Transform endRotiation;
+    public bool doorOpen;
 
     private void Start()
     {
@@ -19,12 +23,30 @@ public class SpawnEnemy : MonoBehaviour
         guard.transform.GetChild(1).GetComponent<Detection>().player = playerCapsule; //needs to get Detection script of VisionCapsule child of guard prefab
     }
 
-    void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Player") && !hasSpawned)
+        if (doorOpen && !hasSpawned)
         {
-            Instantiate(guard, spawnPoint);
-            hasSpawned = true;
+            spawnGuard();
         }
+        if (hasSpawned)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, endRotiation.rotation, Time.deltaTime);
+        }
+    }
+
+    /*void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")&& !hasSpawned)
+        {
+            spawnGuard();
+            transform.rotation = Quaternion.Slerp(transform.rotation, endRotiation.rotation, Time.deltaTime);
+        }
+    }*/
+
+    void spawnGuard()
+    {
+        Instantiate(guard, spawnPoint);
+        hasSpawned = true;
     }
 }

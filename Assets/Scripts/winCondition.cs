@@ -13,7 +13,7 @@ public class winCondition : MonoBehaviour
         if (other.gameObject.CompareTag("Win"))
         {
             Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2); //End Screen
         }
     }
 }
